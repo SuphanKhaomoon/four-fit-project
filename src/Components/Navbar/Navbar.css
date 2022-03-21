@@ -1,0 +1,36 @@
+.navbar {
+    display: flex;
+    padding: 0 35px;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+  }
+  
+  .navbar .navbar-logo {
+    height: 30px;
+  }
+  
+  .navbar .navbar-menu {
+    display: flex;
+    height: 100%;
+  }
+  
+  .navbar .navbar-menu a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #2f76b5;
+    padding: 0 20px;
+    transition: all 0.2s;
+  }
+  
+  .navbar .navbar-menu a:hover {
+    background-color: rgb(228, 228, 228);
+  }
+  
+  .navbar .navbar-profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
