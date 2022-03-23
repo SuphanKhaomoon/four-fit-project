@@ -8,7 +8,11 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <ExcerciseActivityForm />
+      <div className='App-content'>
+        <ExcerciseActivityForm />
+        <ExcerciseActivityForm />
+        <ExcerciseActivityForm />
+      </div>
 
     </div>
   );

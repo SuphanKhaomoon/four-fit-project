@@ -1,8 +1,8 @@
 .form-container {
     padding: 32px;
     display: flex;
-    flex-direction: column;
-    width: 30%;
+    /* flex-direction: column; */
+    /* width: 30%; */
     border-style: solid;
     border-radius: 10px;
     border-color: lightgray;
@@ -14,6 +14,7 @@
 
 .form-label {
     color: #2e76b5;
+    display: flex;
 }
 
 .add-button {
