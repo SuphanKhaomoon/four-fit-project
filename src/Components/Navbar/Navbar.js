@@ -10,13 +10,13 @@ const Navbar = () => {
                 alt="FourFit logo"
             />
             {/* <!-- Menu --> */}
-            <div className="navbar-menu">
+            {/* <div className="navbar-menu">
                 <a href="#">Home</a>
                 <a href="#">News</a>
                 <a href="#">Products</a>
                 <a href="#">Community</a>
                 <a href="#">Contact</a>
-            </div>
+            </div> */}
             {/* <!-- Profile --> */}
             <img
                 className="navbar-profile"
