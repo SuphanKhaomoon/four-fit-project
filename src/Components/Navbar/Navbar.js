@@ -2,7 +2,7 @@ import './Navbar.css';
 
 const Navbar = () => {
     return (
-        <nav className="navbar">
+        <nav className="navbar mb-5">
             {/* <!-- Logo --> */}
             <img
                 className="navbar-logo"
@@ -21,7 +21,7 @@ const Navbar = () => {
             <img
                 className="navbar-profile"
                 src="./images/default_profile.jpg"
-                alt="Profile picture"
+                alt="Profile"
             />
     </nav>
     );

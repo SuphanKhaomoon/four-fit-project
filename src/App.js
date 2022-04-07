@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <div className='container d-flex justify-content-lg-between'>
+      <div className='container d-flex justify-content-between'>
         <div className='row'>
           <div className='col-lg-6 col-12'>
             <Form1 />

@@ -1,14 +1,15 @@
 import './List.css'
 
-const List = () => {
+const List = (props) => {
     return (
         <section id='4fit-list'>
-            <div className='container W-100'>
+            <div className='container'>
                 <div className='row'>
                     <div className='col p-0'>
-                        <div className='card bg-primary'>
+                        <div className='card bg-secondary'>
                             <div className='card-body'>
-                                <h4 className='card-title text-white m-0 ps-2 pe-5 py-2'>CYCLING</h4>
+                                {/* <h4 className='card-title text-white m-0 ps-2 pe-5 py-2'>CYCLING</h4> */}
+                                <img src='./run.png' alt='run' className='w-100' />
                             </div>
                         </div>
                     </div>    
@@ -27,7 +28,7 @@ const List = () => {
                         </div>    
                     </div>    
                     <div className='col'>
-                        <button className='btn btn-outline-danger h-100'>Bin</button>    
+                        <button className='btn btn-outline-danger w-100'>Bin</button>    
                     </div>    
                 </div>    
             </div> 

@@ -2,33 +2,48 @@ import { useForm } from 'react-hook-form';
 import './Form.css';
 
 const Form1 = () => {
-    const { register, handleSubmit, watch, formState: {errors} } = useForm({
-        defaultValues: {
-            name: '',
-            description: '',
-            type: '',
-            duration: '',
-            hours: '',
-            minutes: '',
-            seconds: '',
-            date: '',
-        }
+    const { register, 
+            handleSubmit, 
+            getValues, 
+            formState: {errors} 
+        } = useForm({
+            defaultValues: {
+                name: '',
+                description: '',
+                type: '',
+                duration: 0,
+                hours: '',
+                minutes: '',
+                seconds: '',
+                date: '',
+            }
     });
 
     console.log(errors);
-    // console.log(watch);
+    
+    const onSubmit = () => {
+        const date = new Date();
+        const values = getValues()
+        const calculate = (Number(values.hours) * 3600000) + Number(values.minutes * 60000) + Number(values.seconds * 1000);
+        const data = {
+            name: values.name,
+            description: values.description,
+            type: values.type,
+            duration: calculate,
+            date: values.date,
+            timeStamp: date
+        }
+        
+        console.log(data);
+    }
 
-   
     return (
         <section id="4fit-form">
-            <div className="container form-container">
-                <div className="row d-flex justify-content-center">
+            <div className="container form-container d-flex justify-content-center">
+                <div className="row">
                     <div className="col">
                         <h2 className="text-center">Activity</h2>
-                        <form 
-                            onSubmit={handleSubmit((data) => {
-                            console.log(data);
-                        })}>
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-group">
                                 <label className="form-label">NAME <span className='text-danger'>&nbsp;*</span></label>
                                 <input 
@@ -89,43 +104,38 @@ const Form1 = () => {
                             <div className='form-group'>
                                 <label className="form-label">DURATION <span className='text-danger'>&nbsp;*</span></label>
                                 <span className='text-primary'>Hours &nbsp;
-                                    <input className="text-center" 
+                                    <input className="text-center width" 
                                         type="number" 
                                         id="hours" 
                                         name="hours" 
                                         min="0" 
-                                        max="24"
-                                        {...register("hours")}
+                                        max="23"
+                                        {...register("hours", { required: 'duration is required' })}
                                     />
                                 </span>
                                 <span className='text-primary'>&nbsp; Minutes &nbsp;
-                                    <input className="text-center" 
+                                    <input className="text-center width" 
                                         type="number" 
                                         id="minutes" 
                                         name="minutes" 
                                         min="0" 
                                         max="59"
-                                        {...register("minutes")}
+                                        {...register("minutes", { required: 'duration is required' })}
                                     />
                                 </span>
                                 <span className='text-primary'>&nbsp; Seconds &nbsp;
-                                    <input className="text-center" 
+                                    <input className="text-center width" 
                                         type="number" 
                                         id="seconds" 
                                         name="seconds" 
                                         min="0" 
                                         max="59"
-                                        {...register("seconds")}
+                                        {...register("seconds", { required: 'duration is required' })}
                                     />
                                 </span>
-                                {/* <input 
-                                    type="number"
-                                    name="duration"
-                                    id='duration'
-                                    disabled
-                                    {...register("duration")}
-                                />
-                                <label className='text-danger form-label m-0'>{errors.duration?.message}</label> */}
+                                <label className='text-danger form-label m-0'>
+                                    {errors.hours?.message || errors.minutes?.message || errors.seconds?.message}
+                                </label> 
                             </div>
                             <div className="form-group">
                                 <label className="form-label">DATE <span className='text-danger'>&nbsp;*</span></label>
