@@ -1,11 +1,13 @@
 import { useForm } from 'react-hook-form';
 import './Form.css';
+import { v4 as uuidv4 } from 'uuid';
 
-const Form = () => {
+const Form = ({onAddItem}) => {
     const { register, 
             handleSubmit, 
             getValues, 
-            formState: {errors} 
+            reset,
+            formState: {errors}
         } = useForm({
             defaultValues: {
                 name: '',
@@ -19,22 +21,29 @@ const Form = () => {
             }
     });
 
-    console.log(errors);
+    // console.log(errors);
     
-    const onSubmit = () => {
+    const onSubmit = (data) => {
         const date = new Date();
-        const values = getValues()
+        const values = getValues();
         const calculate = (Number(values.hours) * 3600000) + Number(values.minutes * 60000) + Number(values.seconds * 1000);
-        const data = {
+        const datas = {
+            id: uuidv4(),
             name: values.name,
             description: values.description,
             type: values.type,
+            hours: values.hours,
+            minutes: values.minutes,
+            seconds: values.seconds,
             duration: calculate,
             date: values.date,
             timeStamp: date
         }
         
-        console.log(data);
+        onAddItem(datas);
+        // console.log(data);
+        reset();
+        
     }
 
     return (
@@ -90,17 +99,6 @@ const Form = () => {
                                 </select>
                                 <label className='text-danger form-label m-0'>{errors.type?.message}</label>
                             </div>
-                            {/* <div className="form-group">
-                                <label className="form-label">DURATION <span className='text-danger'>&nbsp;*</span></label>
-                                <input 
-                                    type="time" 
-                                    className="form-control" 
-                                    id="duration"
-                                    placeholder="minute:seconds:miliseconds"
-                                    {...register("duration", { required: 'duration is required' })}
-                                />
-                                <label className='text-danger form-label m-0'>{errors.duration?.message}</label>
-                            </div> */}
                             <div className='form-group'>
                                 <label className="form-label">DURATION <span className='text-danger'>&nbsp;*</span></label>
                                 <span className='text-primary'>Hours &nbsp;
