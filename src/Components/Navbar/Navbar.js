@@ -20,7 +20,7 @@ const Navbar = () => {
             {/* <!-- Profile --> */}
             <img
                 className="navbar-profile"
-                src="./images/default_profile.jpg"
+                src="./logo192.png"
                 alt="Profile"
             />
     </nav>
