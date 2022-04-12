@@ -1,14 +1,13 @@
-import { element } from 'prop-types';
 import Item from '../Item/Item';
 import './List.css'
 
-const List = ({ data }) => {
-    // const { data } = props;
+const List = ({ data, onRemoveItem }) => {
+    
     return (
         <section id='4fit-list'>
             <ul>
-                {data.map((element) => {
-                    return <Item {...element} key={element.id}/>
+                {data.map((data) => {
+                    return <Item {...data} key={data.id} onRemoveItem={onRemoveItem}/>
                 })}
             </ul>
         </section>

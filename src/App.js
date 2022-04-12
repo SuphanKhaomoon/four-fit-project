@@ -23,6 +23,12 @@ function App() {
     })
   };
 
+  const onRemoveItem = (item) => {
+    setItems(
+      items.filter((prevItem => prevItem.id !== item.id))
+    );
+  };
+
 
   return (
     <div className='container'>
@@ -32,7 +38,7 @@ function App() {
           <Form onAddItem={onAddNewItem}/>
         </div>
         <div className='col-lg-6 col-12'>
-          <List data={items}/>
+          <List data={items} onRemoveItem={onRemoveItem}/>
         </div>
       </div>
     </div>

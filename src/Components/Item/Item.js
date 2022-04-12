@@ -1,11 +1,14 @@
 import './Item.css';
 
-
 const Item =(props) => {
     console.log(props);
     const changeName = `./${props.type}.png`;
 
-    
+    const removeItem = () => {
+        props.onRemoveItem(props);
+    };
+
+
     return (
         <section id="4fit-item" className='mb-2'>
             <div className='container'>
@@ -25,7 +28,8 @@ const Item =(props) => {
                     </div>    
                     <div className='col'>
                         <button 
-                            className='btn btn-outline-danger w-100' 
+                            className='btn btn-outline-danger w-100'
+                            onClick={removeItem}
                         >
                             Delete
                         </button>    
