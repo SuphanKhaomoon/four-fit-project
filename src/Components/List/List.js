@@ -1,8 +1,8 @@
-import Item from '../Item/Item';
 import './List.css'
+import Item from '../Item/Item';
 
 const List = ({ data, onRemoveItem }) => {
-    
+
     return (
         <section id='4fit-list'>
             <ul>

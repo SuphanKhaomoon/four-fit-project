@@ -1,6 +1,6 @@
+import './Form.css';
 import { useForm } from 'react-hook-form';
 import { v4 as uuidv4 } from 'uuid';
-import './Form.css';
 
 
 const Form = ({onAddItem}) => {
@@ -24,7 +24,7 @@ const Form = ({onAddItem}) => {
 
     // console.log(errors);
     
-    const onSubmit = (data) => {
+    const onSubmit = () => {
         const date = new Date();
         const values = getValues();
         const calculate = (Number(values.hours) * 3600000) + Number(values.minutes * 60000) + Number(values.seconds * 1000);
@@ -91,47 +91,51 @@ const Form = ({onAddItem}) => {
                             <div className="form-group">
                                 <label className="form-label">ACTIVITY TYPE <span className='text-danger'>&nbsp;*</span></label>
                                 <select className="form-control" id="example-select" {...register("type", {required: 'type is required'})}>
-                                    <option className="text-danger" value="">--Please select activity--</option>
-                                    <option className="text-danger" value="run">Run</option>
-                                    <option className="text-danger" value="bicycle ride">Bicycle Ride</option>
-                                    <option className="text-danger" value="swim">Swim</option>
-                                    <option className="text-danger" value="walk">Walk</option>
-                                    <option className="text-danger" value="hike">Hike</option>
+                                    <option className="text-secondary" value="">--Please select activity--</option>
+                                    <option className="text-secondary" value="run">Run</option>
+                                    <option className="text-secondary" value="bicycle ride">Bicycle Ride</option>
+                                    <option className="text-secondary" value="swim">Swim</option>
+                                    <option className="text-secondary" value="walk">Walk</option>
+                                    <option className="text-secondary" value="hike">Hike</option>
                                 </select>
                                 <label className='text-danger form-label m-0'>{errors.type?.message}</label>
                             </div>
                             <div className='form-group'>
                                 <label className="form-label">DURATION <span className='text-danger'>&nbsp;*</span></label>
-                                <span className='text-primary'>Hours &nbsp;
-                                    <input className="text-center width" 
+                                <span className='text-primary d-md-inline d-none'>Hours &nbsp;</span>
+                                <input className="text-center input-width d-inline form-control" 
                                         type="number" 
                                         id="hours" 
                                         name="hours" 
                                         min="0" 
                                         max="23"
                                         {...register("hours", { required: 'duration is required' })}
-                                    />
-                                </span>
-                                <span className='text-primary'>&nbsp; Minutes &nbsp;
-                                    <input className="text-center width" 
+                                />
+
+                                <span className='text-primary d-md-inline d-none'>&nbsp; Minutes &nbsp;</span>
+                                <input className="text-center input-width d-inline ms-2 form-control" 
                                         type="number" 
                                         id="minutes" 
                                         name="minutes" 
                                         min="0" 
                                         max="59"
                                         {...register("minutes", { required: 'duration is required' })}
-                                    />
-                                </span>
-                                <span className='text-primary'>&nbsp; Seconds &nbsp;
-                                    <input className="text-center width" 
+                                />
+
+                                <span className='text-primary d-md-inline d-none'>&nbsp; Seconds &nbsp;</span>
+                                <input className="text-center input-width d-inline ms-2 form-control" 
                                         type="number" 
                                         id="seconds" 
                                         name="seconds" 
                                         min="0" 
                                         max="59"
                                         {...register("seconds", { required: 'duration is required' })}
-                                    />
-                                </span>
+                                />
+                                {/* span for small width visible */}
+                                <span className='text-primary d-md-none d-inline me-3 pl'>Hours</span>
+                                <span className='text-primary d-md-none d-inline me-1'>Minutes</span>
+                                <span className='text-primary d-md-none d-inline ps-2'>Seconds</span>
+
                                 <label className='text-danger form-label m-0'>
                                     {errors.hours?.message || errors.minutes?.message || errors.seconds?.message}
                                 </label> 

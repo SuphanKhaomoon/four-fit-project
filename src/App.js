@@ -17,7 +17,7 @@ function App() {
   const [items, setItems] = useState([]);
 
   const onAddNewItem = (newItem) => {
-    console.log("ข้อมูลที่ส่งมาจาก Form Component = ", newItem);
+    // console.log("ข้อมูลที่ส่งมาจาก Form Component = ", newItem);
     setItems((prevItem) => {
       return [newItem,...prevItem]
     })
@@ -34,7 +34,7 @@ function App() {
     <div className='container'>
       <Navbar />
       <div className='row container justify-content-between'>
-        <div className='col-lg-6 col-12'>
+        <div className='col-lg-6 col-12 mb-5'>
           <Form onAddItem={onAddNewItem}/>
         </div>
         <div className='col-lg-6 col-12'>

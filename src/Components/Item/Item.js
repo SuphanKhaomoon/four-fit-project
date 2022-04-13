@@ -1,13 +1,12 @@
 import './Item.css';
 
 const Item =(props) => {
-    console.log(props);
+    // console.log(props);
     const changeName = `./${props.type}.png`;
 
     const removeItem = () => {
         props.onRemoveItem(props);
     };
-
 
     return (
         <section id="4fit-item" className='mb-2'>
@@ -21,10 +20,10 @@ const Item =(props) => {
                         </div>
                     </div>    
                     <div className='col p-0'>
-                        <div className='text-white h-100 bg-secondary rounded m-0 px-2 py-3'>{props.date}</div>
+                        <div className='text-white fw-bold h-100 bg-secondary rounded m-0 px-2 py-3'>{props.date}</div>
                     </div>    
                     <div className='col p-0'>
-                        <div className='text-white h-100 bg-danger rounded m-0 px-2 py-3'><span>{props.hours}H : {props.minutes}M : {props.seconds}S</span></div>
+                        <div className='text-white fw-bold h-100 bg-danger rounded m-0 px-2 py-3'><span>{props.hours}H : {props.minutes}M : {props.seconds}S</span></div>
                     </div>    
                     <div className='col'>
                         <button 
