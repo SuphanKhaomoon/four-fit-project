@@ -1,21 +1,39 @@
-// import { useState } from 'react';
+import { useState } from 'react';
+import { isPropertySignature } from 'typescript';
 import './EditForm.css';
 
-const EditForm = ({item}) => {
+const EditForm = ({item, setIsvisible}) => {
     
-    // const [name, setName] = useState('');
-    // const [description, setDescription] = useState('');
-    // const [type, setType] = useState('');
-    // const [hours, setHours] = useState('');
-    // const [minutes, setMinutes] = useState('');
-    // const [seconds, setSeconds] = useState('');
-    // const [duration, setDuration] = useState('');
-    // const [date, setDate] = useState('');
-    
+    const [name, setName] = useState(item.name);
+    const [description, setDescription] = useState(item.description);
+    const [type, setType] = useState(item.type);
+    const [hours, setHours] = useState(item.hours);
+    const [minutes, setMinutes] = useState(item.minutes);
+    const [seconds, setSeconds] = useState(item.seconds);
+    const [duration, setDuration] = useState(item.duration);
+    const [date, setDate] = useState(item.date);
 
-    // const onSubmit = () => {
-           
-    // }
+    const handleSubmit = (e) => {
+
+        e.preventDefault();
+
+        setDuration(() => {
+            return (Number(hours) * 3600000) + Number(minutes * 60000) + Number(seconds * 1000);
+        })
+
+        const values = {
+            id: item.id,
+            name,
+            description,
+            hours,
+            minutes,
+            seconds,
+            duration,
+            date,
+            type
+        }
+
+    }
 
     return (
         <section id="4fit-form">
@@ -23,7 +41,7 @@ const EditForm = ({item}) => {
                 <div className="row">
                     <div className="col">
                         <h2 className="text-center">Activity</h2>
-                        <form >
+                        <form onSubmit={handleSubmit}>
                             <div className="form-group">
                                 <label className="form-label">NAME <span className='text-danger'>&nbsp;*</span></label>
                                 <input 
@@ -31,8 +49,8 @@ const EditForm = ({item}) => {
                                     className="form-control" 
                                     id="name" 
                                     placeholder="Name"
-                                    
-                                    value={item.name}
+                                    onChange={e => setName(e.target.value)}
+                                    value={name}
                                 />
                                 {/* <label className='text-danger form-label m-0'>{errors.name?.message}</label> */}
                             </div>
@@ -43,14 +61,14 @@ const EditForm = ({item}) => {
                                     className="form-control" 
                                     id="description"
                                     placeholder="Description"
-                                    // onChange={}
-                                    value={item.description}
+                                    onChange={e => setDescription(e.target.value)}
+                                    value={description}
                                 />
                                 {/* <label className='text-danger form-label m-0'>{errors.description?.message}</label> */}
                             </div>
                             <div className="form-group">
                                 <label className="form-label">ACTIVITY TYPE <span className='text-danger'>&nbsp;*</span></label>
-                                <select className="form-control" id="example-select" >
+                                <select className="form-control" value={type} id="example-select" onChange={e => setType(e.target.value)}>
                                     <option className="text-secondary" value="">--Please select activity--</option>
                                     <option className="text-secondary" value="run">Run</option>
                                     <option className="text-secondary" value="bicycle ride">Bicycle Ride</option>
@@ -69,8 +87,8 @@ const EditForm = ({item}) => {
                                         name="hours" 
                                         min="0" 
                                         max="23"
-
-                                        value={item.hours}
+                                        onChange={e => setHours(e.target.value)}
+                                        value={hours}
                                 />  
 
                                 <span className='text-primary d-md-inline d-none'>&nbsp; Minutes &nbsp;</span>
@@ -80,8 +98,8 @@ const EditForm = ({item}) => {
                                         name="minutes" 
                                         min="0" 
                                         max="59"
-                                        
-                                        value={item.minutes}
+                                        onChange={e => setMinutes(e.target.value)}
+                                        value={minutes}
                                 />
 
                                 <span className='text-primary d-md-inline d-none'>&nbsp; Seconds &nbsp;</span>
@@ -91,8 +109,8 @@ const EditForm = ({item}) => {
                                         name="seconds" 
                                         min="0" 
                                         max="59"
-                                        
-                                        value={item.seconds}
+                                        onChange={e => setSeconds(e.target.value)}
+                                        value={seconds}
                                 />
                                 {/* span for small width visible */}
                                 <span className='text-primary d-md-none d-inline me-3 pl'>Hours</span>
@@ -110,13 +128,13 @@ const EditForm = ({item}) => {
                                     className="form-control" 
                                     id="date"
                                     placeholder="DD/MM/YYYY"
-                                    
-                                    value={item.date}
+                                    onChange={e => setDate(e.target.value)}
+                                    value={date}
                                 />
                                 {/* <label className='text-danger form-label m-0'>{errors.date?.message}</label> */}
                             </div>
                             <div className="d-flex justify-content-center mt-4">
-                                <button href="#"
+                                <button 
                                    type="submit" 
                                    className="btn add-button text-white"
                                 >
