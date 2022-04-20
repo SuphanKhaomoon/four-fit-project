@@ -1,6 +1,12 @@
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = (props) => {
+
+    const addActivity = () => {
+        props.onCreateActivity(props);
+    }
+
+
     return (
         <nav className="navbar mb-5">
             {/* <!-- Logo --> */}
@@ -10,13 +16,13 @@ const Navbar = () => {
                 alt="FourFit logo"
             />
             {/* <!-- Menu --> */}
-            {/* <div className="navbar-menu">
-                <a href="#">Home</a>
-                <a href="#">News</a>
+            <div className="navbar-menu">
+                <a onClick={addActivity}>Create Activity</a>
+                {/* <a href="#">News</a>
                 <a href="#">Products</a>
                 <a href="#">Community</a>
-                <a href="#">Contact</a>
-            </div> */}
+                <a href="#">Contact</a> */}
+            </div>
             {/* <!-- Profile --> */}
             <img
                 className="navbar-profile"
