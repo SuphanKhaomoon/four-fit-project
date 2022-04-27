@@ -17,6 +17,7 @@ const Item =(props) => {
         props.onGetItem(props);
     };
 
+    
     return (
         <section id='4fit-item'>
             <table className='table table-borderless'>

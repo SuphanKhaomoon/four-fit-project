@@ -22,10 +22,6 @@ const Form = ({onAddItem}) => {
             }
     });
 
-    // console.log(errors);
-
-    // console.log(item);
-    // console.log(Object.keys(item).length);
     
     const onSubmit = () => {
         const date = new Date();
@@ -47,7 +43,6 @@ const Form = ({onAddItem}) => {
         
         onAddItem(datas);
         
-        // console.log(data);
         reset();
         
     }
@@ -74,7 +69,6 @@ const Form = ({onAddItem}) => {
                                             message: "input at least 5 charactors."
                                         },
                                     })}
-                                    // value={item.name}
                                 />
                                 <label className='text-danger form-label m-0'>{errors.name?.message}</label>
                             </div>
@@ -92,7 +86,6 @@ const Form = ({onAddItem}) => {
                                             message: "input at least 11 charactors."
                                         },
                                     })}
-                                    // value={item.description}
                                 />
                                 <label className='text-danger form-label m-0'>{errors.description?.message}</label>
                             </div>
@@ -118,7 +111,6 @@ const Form = ({onAddItem}) => {
                                         min="0" 
                                         max="23"
                                         {...register("hours", { required: 'duration is required' })}
-                                        // value={item.hours}
                                 />  
 
                                 <span className='text-primary d-md-inline d-none'>&nbsp; Minutes &nbsp;</span>
@@ -129,7 +121,6 @@ const Form = ({onAddItem}) => {
                                         min="0" 
                                         max="59"
                                         {...register("minutes", { required: 'duration is required' })}
-                                        // value={item.minutes}
                                 />
 
                                 <span className='text-primary d-md-inline d-none'>&nbsp; Seconds &nbsp;</span>
@@ -140,7 +131,6 @@ const Form = ({onAddItem}) => {
                                         min="0" 
                                         max="59"
                                         {...register("seconds", { required: 'duration is required' })}
-                                        // value={item.seconds}
                                 />
                                 {/* span for small width visible */}
                                 <span className='text-primary d-md-none d-inline me-3 pl'>Hours</span>
@@ -159,7 +149,6 @@ const Form = ({onAddItem}) => {
                                     id="date"
                                     placeholder="DD/MM/YYYY"
                                     {...register("date", { required: 'date is required' })}
-                                    // value={item.date}
                                 />
                                 <label className='text-danger form-label m-0'>{errors.date?.message}</label>
                             </div>

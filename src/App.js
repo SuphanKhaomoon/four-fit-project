@@ -17,10 +17,9 @@ function App() {
 
   const [items, setItems] = useState([]);
 
-  const [itemData, setItemData] = useState({});
+  let [itemData, setItemData] = useState({});
 
   const [isVisible, setIsVisible] = useState(false);
-  
 
   const onAddNewItem = (newItem) => {
     // console.log("ข้อมูลที่ส่งมาจาก Form Component = ", newItem);
@@ -36,14 +35,27 @@ function App() {
   };
 
   const onEditItem = (item) => {
+    
     setItemData(() => {
       return item;
     });
-
+    
     setIsVisible(() => true);
+      
   };
 
-  const onCreateActivity = (item) => {
+  const onEditData = (item) => {
+    // console.log(typeof(item.id));
+    // console.log(item.id);
+    // console.log(item);
+    console.log(items.findIndex(findItem => findItem.id === item.id));
+    const index = items.findIndex(findItem => findItem.id === item.id);
+    const newItem = items[index] = item;
+    console.log(newItem);
+    
+  }
+
+  const onCreateActivity = () => {
     setIsVisible(() => false);
   }
 
@@ -61,7 +73,7 @@ function App() {
           </div> )
         :
          (  <div className='col-lg-6 col-12 mb-5'>
-              <EditForm item={itemData}/>
+            <EditForm item={itemData} onEditData={onEditData} onCreateActivity={onCreateActivity}/>
             </div> ) 
         }
         <div className='col-lg-6 col-12'>

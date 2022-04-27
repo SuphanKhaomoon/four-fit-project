@@ -17,7 +17,7 @@ const Navbar = (props) => {
             />
             {/* <!-- Menu --> */}
             <div className="navbar-menu">
-                <a onClick={addActivity}>Create Activity</a>
+                <a onClick={addActivity}>Create Activity </a>
                 {/* <a href="#">News</a>
                 <a href="#">Products</a>
                 <a href="#">Community</a>
